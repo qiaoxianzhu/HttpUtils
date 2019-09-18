@@ -1,0 +1,2 @@
+include ':app', ':httputils'
+rootProject.name='My Application'
