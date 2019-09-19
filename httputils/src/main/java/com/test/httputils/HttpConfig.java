@@ -6,8 +6,8 @@ package com.test.httputils;
  * description：
  */
 public class HttpConfig {
-    public static final String RESPONSE_OK = "XXX";
-    public static final String TOKEN_OVERDUE = "XXX";
+    public static final String RESPONSE_OK = "";
+    public static final String TOKEN_OVERDUE = "";
     public static final int HTTP_TIME = 15;
     //端口号
     public static String BASE_URL = "XXX";

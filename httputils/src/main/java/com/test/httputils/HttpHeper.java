@@ -20,16 +20,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @author Joe
  * @date 2019/9/18.
  * description：Retrofit封装类
- *  如何取消请求？
- *  Rx方式和Call方式
+ * 如何取消请求？
+ * Rx方式和Call方式
  */
 public class HttpHeper {
     private Retrofit retrofit;
     private Object tag;
 
+    String baseUrl = "";
+
     private HttpHeper(Object object) {
         retrofit = new Retrofit.Builder()
-                .baseUrl(HttpConfig.getURL()) // 设置 网络请求 Url
+                .baseUrl(baseUrl) // 设置 网络请求 Url
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getOkHttpClient())
@@ -56,6 +58,11 @@ public class HttpHeper {
     public static HttpHeper get() {
         HttpHeper httpHeper = new HttpHeper(new Object());
         return httpHeper;
+    }
+
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
 
