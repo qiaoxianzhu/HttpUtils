@@ -27,11 +27,11 @@ public class HttpHeper {
     private Retrofit retrofit;
     private Object tag;
 
-    static String baseUrl = "";
 
-    private HttpHeper(Object object) {
+    private HttpHeper(Object object, String url) {
+        Log.d("HttpHeper", "HttpHeper: " + url + "===" + object);
         retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl) // 设置 网络请求 Url
+                .baseUrl(url) // 设置 网络请求 Url
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getOkHttpClient())
@@ -56,8 +56,7 @@ public class HttpHeper {
      * 判断是call 还是 observble
      */
     public static HttpHeper get(String Url) {
-        baseUrl = Url;
-        HttpHeper httpHeper = new HttpHeper(new Object());
+        HttpHeper httpHeper = new HttpHeper(new Object(), Url);
         return httpHeper;
     }
 
