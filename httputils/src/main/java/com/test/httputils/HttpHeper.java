@@ -27,7 +27,7 @@ public class HttpHeper {
     private Retrofit retrofit;
     private Object tag;
 
-    String baseUrl = "";
+    static String baseUrl = "";
 
     private HttpHeper(Object object) {
         retrofit = new Retrofit.Builder()
@@ -55,15 +55,16 @@ public class HttpHeper {
      * 手动取消 自动 取消
      * 判断是call 还是 observble
      */
-    public static HttpHeper get() {
+    public static HttpHeper get(String Url) {
+        baseUrl = Url;
         HttpHeper httpHeper = new HttpHeper(new Object());
         return httpHeper;
     }
 
 
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
+//    public void setBaseUrl(String baseUrl) {
+//        this.baseUrl = baseUrl;
+//    }
 
 
 //    public UserService userService() {
